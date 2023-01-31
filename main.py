@@ -81,33 +81,31 @@ def fun(ent):
 
         ####################################################################################################################################################
         
-        # RGB to grayscale
+      
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = det(gray)
 
-        # Iterator to count faces
+       
         i = 0
         for face in faces:
 
-            # Get the coordinates of faces
+            
             x, y = face.left(), face.top()
             x1, y1 = face.right(), face.bottom()
             cv2.rectangle(img, (x, y), (x1, y1), (0, 255, 0), 2)
 
-            # Increment iterator for each face in faces
             i = i+1
             
-            # Display the box and faces
+            
             cv2.putText(img, 'face num'+str(i), (x-10, y-10),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
             print(face, i)
             
 
         if i>1:break
-        # Display the resulting img
-        # cv2.imshow('img', img)
+        
 
-        # This command let's us quit with the "q" button on a keyboard.
+        
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
@@ -155,6 +153,6 @@ def fun(ent):
         cv2.waitKey(1)
 
     
-    # Release the capture and destroy the windows
+   
     cap.release()
     cv2.destroyAllWindows()
